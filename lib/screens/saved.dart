@@ -12,7 +12,10 @@ class _SavedState extends State<Saved> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Saved'),
+        child: Text(
+          'Saved',
+          style: TextStyle(fontSize: 25),
+        ),
       ),
     );
   }

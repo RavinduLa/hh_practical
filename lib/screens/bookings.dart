@@ -12,7 +12,10 @@ class _BookingsState extends State<Bookings> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Bookings'),
+        child: Text(
+          'Bookings',
+          style: TextStyle(fontSize: 25),
+        ),
       ),
     );
   }
