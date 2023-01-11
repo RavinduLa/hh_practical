@@ -13,44 +13,67 @@ class HotelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     if (kDebugMode) {
       print('Image url: ${hotel.imageUrl}');
     }
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+        elevation: 5,
         child: InkWell(
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: 100,
-                child: CachedNetworkImage(
-                  imageUrl: hotel.imageUrl!,
-                  height: 100,
-                  width: 100,
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => const CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.purple),
-                  ),
-                  errorWidget: (context, url, error) => const Icon(
-                    Icons.error,
-                    size: 50,
+                width: 140,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      bottomLeft: Radius.circular(10)),
+                  child: CachedNetworkImage(
+                    imageUrl: hotel.imageUrl!,
+                    height: 200,
+                    width: 150,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.purple),
+                    ),
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.error,
+                      size: 50,
+                    ),
                   ),
                 ),
               ),
-              Column(
-                children: [
-                  Text(hotel.name),
-                  Text('Only ${hotel.pricesLeft} of these prices left'),
-                  hotel.creditCardNeededForCancellation!
-                      ? const Text(
-                          'Reservation Possible without a credit card. FREE cancellation.')
-                      : const Text('Credit card needed for cancellation'),
-                  hotel.breakfastIncluded! ?
-                      const Text("Breakfast Included") :
-                      const Text('Breakfast not included'),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        hotel.name,
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text('• Only ${hotel.pricesLeft} of these prices left'),
+                    hotel.creditCardNeededForCancellation!
+                        ? const Text(
+                            '• Reservation Possible without a credit card. FREE cancellation.')
+                        : const Text('• Credit card needed for cancellation'),
+                    hotel.breakfastIncluded!
+                        ? const Text("• Breakfast Included")
+                        : const Text('• Breakfast not included'),
+                  ],
+                ),
               )
             ],
           ),
