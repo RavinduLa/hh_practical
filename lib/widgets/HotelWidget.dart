@@ -53,26 +53,30 @@ class HotelWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Text(
-                        hotel.name,
-                        style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                child: LimitedBox(
+                  maxWidth: 250,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text(
+                          hotel.name,
+                          style: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
-                    Text('• Only ${hotel.pricesLeft} of these prices left'),
-                    hotel.creditCardNeededForCancellation!
-                        ? const Text(
-                            '• Reservation Possible without a credit card. FREE cancellation.')
-                        : const Text('• Credit card needed for cancellation'),
-                    hotel.breakfastIncluded!
-                        ? const Text("• Breakfast Included")
-                        : const Text('• Breakfast not included'),
-                  ],
+                      Text(
+                          '• Only ${hotel.pricesLeft} of these prices left'),
+                      hotel.creditCardNeededForCancellation!
+                          ? const Text('• Credit card needed for cancellation')
+                          : const Text(
+                              '• Reservation Possible without a credit card. FREE cancellation.'),
+                      hotel.breakfastIncluded!
+                          ? const Text("• Breakfast Included")
+                          : const Text('• Breakfast not included'),
+                    ],
+                  ),
                 ),
               )
             ],

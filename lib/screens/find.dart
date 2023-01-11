@@ -49,7 +49,7 @@ class _FindState extends State<Find> {
             return ListView.builder(
               //get the hotel list length as the item count
               //itemCount: hotels!.length,
-              itemCount: 1,
+              itemCount: hotels?.length,
               itemBuilder: (BuildContext context, int index) {
                 //return the hotel widget with the current hotel of the list
                 return HotelWidget(hotel: hotels![index]);
