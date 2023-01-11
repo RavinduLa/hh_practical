@@ -40,9 +40,8 @@ class HotelWidget extends StatelessWidget {
                     height: 200,
                     width: 150,
                     fit: BoxFit.cover,
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.purple),
+                    placeholder: (context, url) => const Image(
+                      image: AssetImage('assets/image_placeholder.jpg'),
                     ),
                     errorWidget: (context, url, error) => const Icon(
                       Icons.error,

@@ -16,7 +16,7 @@ class _LandingPageState extends State<LandingPage> {
   int currentIndex = 0;
 
   //array of screens
-  final screens = [Find(), Bookings(), Saved(), Menu()];
+  final screens = [const Find(), const Bookings(), const Saved(), const Menu()];
 
   @override
   Widget build(BuildContext context) {
