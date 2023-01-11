@@ -3,22 +3,20 @@ class Hotel {
   late String name;
   late int pricesLeft;
   late bool? breakfastIncluded;
-  late bool? creditCardNeededForCancellation;
+  late bool? creditCardNeededForReservation;
   late String? imageUrl;
 
   Hotel({required this.id, required this.name, required this.pricesLeft, this.breakfastIncluded,
-      this.creditCardNeededForCancellation, this.imageUrl});
+      this.creditCardNeededForReservation, this.imageUrl});
 
-  //some of the values had to be hardcoded since the dummy API used did not have relatable data.
   factory Hotel.fromjson(Map<String, dynamic> json) {
     return Hotel(
       id: json['id'],
-      name: json['title'],
-      pricesLeft: 2,
-      breakfastIncluded: true,
-      creditCardNeededForCancellation: false,
-      //image had to be hardcoded because the dummy APIs images were not accessible
-      imageUrl: "https://picsum.photos/200/300"
+      name: json['name'],
+      pricesLeft: json['pricesLeft'],
+      breakfastIncluded: json['breakfastIncluded'],
+      creditCardNeededForReservation: json['creditCardNeededForReservation'],
+      imageUrl: json['imageUrl']
     );
   }
 }

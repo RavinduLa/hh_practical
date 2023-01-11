@@ -67,8 +67,8 @@ class HotelWidget extends StatelessWidget {
                         ),
                       ),
                       Text('• Only ${hotel.pricesLeft} of these prices left'),
-                      hotel.creditCardNeededForCancellation!
-                          ? const Text('• Credit card needed for cancellation')
+                      hotel.creditCardNeededForReservation!
+                          ? const Text('• Credit card needed for reservation')
                           : const Text(
                               '• Reservation Possible without a credit card. FREE cancellation.',
                               textAlign: TextAlign.start,
