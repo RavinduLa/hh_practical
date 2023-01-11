@@ -59,8 +59,9 @@ class _FindState extends State<Find> {
             //if the snapshot has no data show the related message
             return Text('{${snapshot.error}');
           }
+          //show the circular progress indicator while loading.
           return const Center(
-            child: Text('loading'),
+            child: CircularProgressIndicator(),
           );
         },
       ),

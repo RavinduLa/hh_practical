@@ -1,3 +1,7 @@
+/*
+* Class for hotel
+* */
+
 class Hotel {
   late int id;
   late String name;
