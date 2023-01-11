@@ -17,19 +17,11 @@ Future<List<Hotel>> fetchAllHotels() async {
   //check if the status code is 200
   if (response.statusCode == 200) {
 
-    if (kDebugMode) {
-      print('Hotels Service: Hotels retrieved. Status Code: ${response.statusCode}');
-    }
-
     //if successful convert the JSON body into Hotel objects and return
     List jsonResponse = json.decode(response.body);
     return jsonResponse.map((e) => Hotel.fromjson(e)).toList();
   } else {
     //In case of failed response throw an exception
-    if (kDebugMode) {
-      print("Failed to retrieve hotels");
-      print("Status Code: ${response.statusCode}");
-    }
     throw Exception('Failed retrieve hotels');
   }
 }

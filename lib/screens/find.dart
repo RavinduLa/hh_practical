@@ -22,9 +22,6 @@ class _FindState extends State<Find> {
 
     //fetch all hotels into the Future list
     futureListHotels = hotel_service.fetchAllHotels();
-    if (kDebugMode) {
-      print('Fetched hotels in init service');
-    }
   }
 
   @override
@@ -45,17 +42,14 @@ class _FindState extends State<Find> {
           if (snapshot.hasData) {
             //if the snapshot has data render them
 
-            if (kDebugMode) {
-              print('Snapshot has data');
-            }
-
             //assign the data to a list of hotels
             List<Hotel>? hotels = snapshot.data;
 
             //return a list view
             return ListView.builder(
               //get the hotel list length as the item count
-              itemCount: hotels!.length,
+              //itemCount: hotels!.length,
+              itemCount: 1,
               itemBuilder: (BuildContext context, int index) {
                 //return the hotel widget with the current hotel of the list
                 return HotelWidget(hotel: hotels![index]);

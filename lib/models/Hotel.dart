@@ -17,7 +17,8 @@ class Hotel {
       pricesLeft: 2,
       breakfastIncluded: true,
       creditCardNeededForCancellation: false,
-      imageUrl: json['url']
+      //image had to be hardcoded because the dummy APIs images were not accessible
+      imageUrl: "https://picsum.photos/200/300"
     );
   }
 }

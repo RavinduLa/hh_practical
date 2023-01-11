@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_project_hh/models/Hotel.dart';
 
@@ -12,21 +13,30 @@ class HotelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    if (kDebugMode) {
+      print('Image url: ${hotel.imageUrl}');
+    }
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
         child: InkWell(
           child: Row(
             children: [
-              CachedNetworkImage(
-                imageUrl: hotel.imageUrl!,
-                fit: BoxFit.cover,
-                placeholder: (context, url) => const CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.purple),
-                ),
-                errorWidget: (context, url, error) => const Icon(
-                  Icons.error,
-                  size: 50,
+              SizedBox(
+                width: 100,
+                child: CachedNetworkImage(
+                  imageUrl: hotel.imageUrl!,
+                  height: 100,
+                  width: 100,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.purple),
+                  ),
+                  errorWidget: (context, url, error) => const Icon(
+                    Icons.error,
+                    size: 50,
+                  ),
                 ),
               ),
               Column(
