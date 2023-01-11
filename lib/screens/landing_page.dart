@@ -31,7 +31,8 @@ class _LandingPageState extends State<LandingPage> {
               icon: Icon(Icons.search_rounded), label: 'Find'),
           BottomNavigationBarItem(
               icon: Icon(Icons.cases_outlined), label: 'Bookings'),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Saved'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite_border_outlined), label: 'Saved'),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Menu'),
         ],
       ),

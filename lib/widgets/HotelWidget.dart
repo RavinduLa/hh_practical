@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sample_project_hh/models/Hotel.dart';
+import 'package:sample_project_hh/models/SavedHotels.dart';
 
 class HotelWidget extends StatelessWidget {
   const HotelWidget({
@@ -26,6 +29,24 @@ class HotelWidget extends StatelessWidget {
         ),
         elevation: 5,
         child: InkWell(
+          onLongPress: () {
+            _addToSaved(hotel, context);
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return CupertinoAlertDialog(
+                    title: const Text("Added to saved"),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  );
+                });
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -84,5 +105,10 @@ class HotelWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  //save the hotel to the saved list calling the provider method
+  void _addToSaved(Hotel hotel, BuildContext context) {
+    Provider.of<SavedHotels>(context, listen: false).add(hotel);
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sample_project_hh/models/SavedHotels.dart';
 import 'package:sample_project_hh/screens/landing_page.dart';
 
 void main() {
@@ -28,13 +30,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Hippo Sample',
-      theme: ThemeData(
-        primarySwatch: primarySwatchColor,
+    return ChangeNotifierProvider(
+      create: (context) => SavedHotels(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Hippo Sample',
+        theme: ThemeData(
+          primarySwatch: primarySwatchColor,
+        ),
+        home: const LandingPage(),
       ),
-      home: const LandingPage(),
     );
   }
 }
